@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/intervall.h
+iostream
+-
+
+/home/dembele/Logic_Prog_C++/src/intervall.cpp
+intervall.h
+/home/dembele/Logic_Prog_C++/src/intervall.h
+algorithm
+-
+cmath
+-
+stdlib.h
+-
+iostream
+-
+string
+-
+limits
+-
+

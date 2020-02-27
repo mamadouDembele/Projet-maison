@@ -1,0 +1,4 @@
+/home/dembele/Logic_Prog_C++/build/CMakeFiles/rebuild_cache.dir
+/home/dembele/Logic_Prog_C++/build/CMakeFiles/intervall.dir
+/home/dembele/Logic_Prog_C++/build/CMakeFiles/edit_cache.dir
+/home/dembele/Logic_Prog_C++/build/CMakeFiles/main.dir

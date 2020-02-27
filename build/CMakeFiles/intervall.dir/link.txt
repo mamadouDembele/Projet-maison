@@ -1,0 +1,2 @@
+/usr/bin/ar qc libintervall.a  CMakeFiles/intervall.dir/src/intervall.cpp.o
+/usr/bin/ranlib libintervall.a
