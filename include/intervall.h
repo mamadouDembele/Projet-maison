@@ -10,7 +10,7 @@ class Intervall
 		Intervall();
 		Intervall(double x);
 		Intervall(double a,double b);
-		Intervall inter_cst(float a);
+		Intervall prod_by_cst(float a);
 		Intervall inverse();
 		Intervall prive_inter(const Intervall& I) const;
 		Intervall expo() const;
@@ -36,3 +36,8 @@ Intervall operator/(const Intervall&, const Intervall& y);
 Intervall operator&(const Intervall&, const Intervall& y);
 Intervall operator|(const Intervall&, const Intervall& y);
 Intervall operator-(const Intervall& x, const Intervall& y);
+double width(const Intervall& x);
+Intervall left(const Intervall& x);
+Intervall right(const Intervall& x);
+Intervall maxi(const Intervall& x, const Intervall& y);
+Intervall mini(const Intervall& x, const Intervall& y);
