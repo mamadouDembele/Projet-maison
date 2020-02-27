@@ -9,6 +9,8 @@
 Intervall::Intervall()
 {
 	m_empty=true;
+	m_inf=nan("1");
+	m_sup=nan("1");
 }
 
 Intervall::Intervall(double x):m_sup(x),m_inf(x),m_empty(false)
@@ -26,6 +28,8 @@ Intervall::Intervall(double a, double b)
 	else
 	{
 		m_empty=true;
+		m_inf=nan("1");
+		m_sup=nan("1");
 	}
 }
 
@@ -44,6 +48,7 @@ double Intervall::borne_sup() const
 	return m_sup;
 }
 
+//exponentielle d'un intervalle
 Intervall Intervall::expo() const
 {
 	if (!this->empty()){
@@ -56,6 +61,7 @@ Intervall Intervall::expo() const
 	}
 }
 
+// le carré d'un intervalle
 Intervall Intervall::sqr() const
 {
 	if (this->empty())
@@ -67,16 +73,18 @@ Intervall Intervall::sqr() const
 	{
 		return Intervall();
 	}
-	if (this->borne_sup()>=0 and this->borne_inf()<0)
+	if (this->borne_sup()>=0 && this->borne_inf()<=0)
 	{
-		return Intervall(0,std::pow(this->borne_sup(),2));
+		return Intervall(0,std::max(std::pow(this->borne_inf(),2),std::pow(this->borne_sup(),2)));
 	}
 	else{
-		return Intervall(std::pow(this->borne_inf(),2),std::pow(this->borne_sup(),2));
+		return Intervall(std::min(std::pow(this->borne_inf(),2),std::pow(this->borne_sup(),2)),
+			std::max(std::pow(this->borne_inf(),2),std::pow(this->borne_sup(),2)));
 	}
 }
 }
 
+//la racine carré d'un intervalle
 Intervall Intervall::sqrt() const
 {
 	if (this->empty())
@@ -98,6 +106,7 @@ Intervall Intervall::sqrt() const
 }
 }
 
+//l'inverse d'un intervalle
 Intervall Intervall::inverse(){
 	double inf=900000000000;//l'infini
 	if (this-> borne_inf()==0 and this-> borne_sup()==0){
@@ -139,7 +148,9 @@ Intervall Intervall::prive_inter(const Intervall& I) const
 
 }
 
-Intervall Intervall::inter_cst(float a)
+
+//produit d'un intervalle par une constante
+Intervall Intervall::prod_by_cst(float a)
 {	
 	double bor_inf=this-> borne_inf();
 	double bor_sup=this-> borne_sup();
@@ -152,6 +163,8 @@ Intervall Intervall::inter_cst(float a)
 	}
 }
 
+
+//operateur de flux
 std::ostream& operator<<(std::ostream& os,const Intervall& x)
 {
 	if (x.empty()==false)
@@ -171,24 +184,40 @@ std::ostream& operator<<(std::ostream& os,const Intervall& x)
   return os;
 }
 
+//somme de deux intervalles
 Intervall operator+(const Intervall& x, const Intervall& y)
-{
-	return Intervall(x.borne_inf()+y.borne_inf(),x.borne_sup()+y.borne_sup());
+{	
+	if (x.empty() or y.empty())
+		return Intervall();
+	else
+		return Intervall(x.borne_inf()+y.borne_inf(),x.borne_sup()+y.borne_sup());
 }
 
+
+//différence de deux intervalle
 Intervall operator-(const Intervall& x, const Intervall& y)
 {
-	return Intervall(x.borne_inf()-y.borne_sup(),x.borne_sup()-y.borne_inf());
+	if (x.empty() or y.empty())
+		return Intervall();
+	else
+		return Intervall(x.borne_inf()-y.borne_sup(),x.borne_sup()-y.borne_inf());
 }
 
+
+//produit de deux intervalles
 Intervall operator*(const Intervall& x,const Intervall& y)
 
 {
+	if (x.empty() or y.empty())
+		return Intervall();
 	
-	return Intervall(std::min(std::min(x.borne_inf()*y.borne_inf(),x.borne_inf()*y.borne_sup()),std::min(x.borne_sup()*y.borne_inf(),x.borne_sup()*y.borne_sup())),
+	else
+		return Intervall(std::min(std::min(x.borne_inf()*y.borne_inf(),x.borne_inf()*y.borne_sup()),std::min(x.borne_sup()*y.borne_inf(),x.borne_sup()*y.borne_sup())),
 		std::max(std::max(x.borne_inf()*y.borne_inf(),x.borne_inf()*y.borne_sup()),std::max(x.borne_sup()*y.borne_inf(),x.borne_sup()*y.borne_sup())));
 }
 
+
+//division de deux intervalles
 Intervall operator/(const Intervall& x, const Intervall& y)
 {
 	double inf=900000000000;//l'infini
@@ -212,16 +241,49 @@ Intervall operator/(const Intervall& x, const Intervall& y)
 		return x*Intervall(-inf, +inf);
 }
 
-Intervall operator&(const Intervall& x, const Intervall& y)
+
+Intervall operator&(const Intervall& x, const Intervall& y)//intersection de deux intervals
 {
-	if (std::max(x.borne_inf(),y.borne_inf())<=std::min(x.borne_sup(),y.borne_sup()))
-		return Intervall(std::max(x.borne_inf(),y.borne_inf()),std::min(x.borne_sup(),y.borne_sup()));
-	else{
+	if (x.empty() or y.empty())
 		return Intervall();
+	else {
+		return Intervall(std::max(x.borne_inf(),y.borne_inf()),std::min(x.borne_sup(),y.borne_sup()));
+
 	}
 }
-Intervall operator|(const Intervall& x, const Intervall& y)
+Intervall operator|(const Intervall& x, const Intervall& y)//union de deux intervals
 {
-	
-	return Intervall(std::min(x.borne_inf(),y.borne_inf()),std::max(x.borne_sup(),y.borne_sup()));
+	if (x.empty())
+		return y;
+	if (y.empty())
+		return x;
+	else
+		return Intervall(std::min(x.borne_inf(),y.borne_inf()),std::max(x.borne_sup(),y.borne_sup()));
+}
+
+double width(const Intervall& x)
+{
+	return x.borne_sup()-x.borne_inf();
+}
+
+Intervall left(const Intervall& x)
+{
+	return Intervall(x.borne_inf(),(x.borne_inf()+x.borne_sup())/2);
+}
+
+Intervall right(const Intervall& x)
+{
+	return Intervall((x.borne_inf()+x.borne_sup())/2,x.borne_sup());
+}
+
+Intervall maxi(const Intervall& x,const Intervall& y)
+{
+	return Intervall(std::max(x.borne_inf(),y.borne_inf()),
+		std::max(x.borne_sup(),y.borne_sup()));
+}
+
+Intervall min(const Intervall& x,const Intervall& y)
+{
+	return Intervall(std::min(x.borne_inf(),y.borne_inf()),
+		std::min(x.borne_sup(),y.borne_sup()));
 }
