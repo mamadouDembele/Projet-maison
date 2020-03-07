@@ -32,14 +32,6 @@ def sivia(P):
         sivia(P.right())
 
 
-# def DrawOuput(P):
-#     t, dt = 0, 0.05
-#     vibes.selectFigure('Y')
-#     while t < 5:
-#         T = Intervall(t, t + dt)
-#         y = P.x * (T * P.y).exp()
-#         vibes.drawBox(T.borne_inf, T.borne_sup, y.borne_inf, y.borne_sup, 'green[green]')
-#         t += dt
 
 
 if __name__ == "__main__":
