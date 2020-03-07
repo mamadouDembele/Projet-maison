@@ -47,10 +47,9 @@ if __name__ == "__main__":
     P = Box(Intervall(-100, 100), Intervall(-100, 100))
     sivia(P)
 
-    # vibes.newFigure('minimiser')
+    
     x = [4, -1,5]
     y = [7, 4,-2]
-    # P = Box(Intervall(-100, 100), Intervall(-100, 100))
     Y = [Intervall(8, 9), Intervall(7, 12),Intervall(7, 11)]
     vibes.newFigure('minimiser')
     sivia(P)
