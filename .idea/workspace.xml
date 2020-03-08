@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f0b58bf-4815-4203-8ce8-bdd59deb6abe" name="Default Changelist" comment="" />
+    <list default="true" id="6f0b58bf-4815-4203-8ce8-bdd59deb6abe" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pybexring.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pybexring.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +21,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1XcP3JIfCzQnjfVoHM4oKUOBkNH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -89,9 +93,25 @@
       <option name="presentableId" value="Default" />
       <updated>1581342208910</updated>
     </task>
+    <task id="LOCAL-00001" summary="new fichier">
+      <created>1583650921346</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583650921346</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new fichier" />
+    <option name="LAST_COMMIT_MESSAGE" value="new fichier" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="574" y="27" width="782" height="741" key="CommitChangelistDialog2" timestamp="1583650920908">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="574" y="27" width="782" height="741" key="CommitChangelistDialog2/67.27.1299.741@67.27.1299.741" timestamp="1583650920908" />
     <state x="499" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1583560260365">
       <screen x="67" y="27" width="1299" height="741" />
     </state>
@@ -124,5 +144,9 @@
       <screen x="67" y="27" width="1299" height="741" />
     </state>
     <state x="592" y="376" key="com.intellij.ide.util.TipDialog/67.27.1299.741@67.27.1299.741" timestamp="1583560193701" />
+    <state x="809" y="316" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583657912171">
+      <screen x="67" y="27" width="1299" height="741" />
+    </state>
+    <state x="809" y="316" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1299.741@67.27.1299.741" timestamp="1583657912171" />
   </component>
 </project>
